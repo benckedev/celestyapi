@@ -1,9 +1,9 @@
-import { getUserBank, hasUserBank } from "../../../functions/economy/coins/get/getUserCoins.js";
-import { setUserBank } from "../../../functions/economy/coins/post/setUserCoins.js";
-import { removeUserBank } from '../../../functions/economy/coins/post/removeUserCoins.js'
+import { getUserDanpen, hasUserDanpen } from '../../../functions/economy/danpen/get/getUserDanpen.js'
+import { setUserDanpen } from '../../../functions/economy/danpen/post/setUserDanpen.js'
+import { removeUserDanpen } from '../../../functions/economy/danpen/post/removeUserDanpen.js'
 import format from '../../../functions/economy/formatter.js'
 
-export class Bank {
+export class Danpen {
     #userID
 
     constructor(id) {
@@ -11,12 +11,12 @@ export class Bank {
     }
     /**
      *
-     * retorna valor de coins no carteira do usuário
+     * retorna valor de danpen do usuário
      * 
      **/
     async get() {
 
-        let value = await getUserBank(this.#userID)
+        let value = await getUserDanpen(this.#userID)
 
         return {
             amount: value,
@@ -29,29 +29,29 @@ export class Bank {
     }
 
     /** 
-     * adiciona coins no banco do usuario
+     * adiciona danpen ao usuario
      * @param {number} amount - quantia para setar
      * 
      **/
     async set(amount = 1) {
-        return setUserBank(this.#userID, amount)
+        return setUserDanpen(this.#userID, amount)
     }
 
     /**
-     * remove coins do banco do usuário
+     * remove danpen do usuário
      * @param {number} amount - quantia para remover
      * 
      **/
     async remove(amount = 1) {
-        return removeUserBank(this.#userID, amount)
+        return removeUserDanpen(this.#userID, amount)
     }
 
     /** 
-     * verifica se o usuário tem certa quantia na carteira
+     * verifica se o usuário tem certa quantia de danpen
      * @param {number} amount - quantia para verificar
      * 
      **/
     async has(amount = 1) {
-        return hasUserBank(this.#userID, amount)
+        return hasUserDanpen(this.#userID, amount)
     }
 }

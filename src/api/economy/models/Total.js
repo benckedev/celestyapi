@@ -1,5 +1,5 @@
-import { getUserBank, getUserCoins } from "../../../functions/economy/Coins/get/getUserCoins.js";
-import { removeUserAny } from '../../../functions/economy/Coins/post/removeUserCoins.js'
+import { getUserBank, getUserCoins, hasUserTotal } from "../../../functions/economy/coins/get/getUserCoins.js";
+import { removeUserAny } from '../../../functions/economy/coins/post/removeUserCoins.js'
 import format from '../../../functions/economy/formatter.js'
 
 export class Total {
@@ -50,5 +50,14 @@ export class Total {
      **/
     async remove(amount = 1) {
         return removeUserAny(this.#userID, amount)
+    }
+
+    /** 
+     * verifica se o usuário tem certa quantia na carteira e no banco
+     * @param {number} amount - quantia para verificar
+     * 
+     **/
+    async has(amount = 1) {
+        return hasUserTotal(this.#userID, amount)
     }
 }

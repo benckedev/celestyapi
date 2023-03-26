@@ -1,6 +1,6 @@
-import { getUserCoins } from "../../../functions/economy/Coins/get/getUserCoins.js";
-import { setUserCoins } from "../../../functions/economy/Coins/post/setUserCoins.js";
-import { removeUserCoins } from '../../../functions/economy/Coins/post/removeUserCoins.js'
+import { getUserCoins, hasUserCoins } from "../../../functions/economy/coins/get/getUserCoins.js";
+import { setUserCoins } from "../../../functions/economy/coins/post/setUserCoins.js";
+import { removeUserCoins } from '../../../functions/economy/coins/post/removeUserCoins.js'
 import format from '../../../functions/economy/formatter.js'
 
 export class Wallet {
@@ -44,5 +44,14 @@ export class Wallet {
      **/
     async remove(amount = 1) {
         return removeUserCoins(this.#userID, amount)
+    }
+
+    /** 
+     * verifica se o usuário tem certa quantia na carteira
+     * @param {number} amount - quantia para verificar
+     * 
+     **/
+    async has(amount = 1) {
+        return hasUserCoins(this.#userID, amount)
     }
 }
