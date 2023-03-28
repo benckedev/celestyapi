@@ -1,10 +1,11 @@
 {
     "scripts": {
         "build": "tsc",
-        "dev": "nodemon src/index.js"
+        "dev": "nodemon index.js"
     },
     "dependencies": {
         "discord.js": "^14.8.0",
+        "lowdb": "^5.1.0",
         "nodemon": "^2.0.21"
     },
     "type": "module"

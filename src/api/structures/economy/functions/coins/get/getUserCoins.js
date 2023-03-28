@@ -1,10 +1,11 @@
+import { db } from "../../../../../database/economy/EconomyData.js"
+
 /**
 * função para receber quantia de coins do usuário 
 * @param {any} id - id do usuário
 **/
 async function getUserCoins(id) {
-    // func pegar coins da db
-    return 13;
+    return (await db.data.users.find(search => search.id === id)).coins
 }
 
 /**
@@ -13,8 +14,7 @@ async function getUserCoins(id) {
 * @param {number} amount - quantia de coins
 **/
 async function hasUserCoins(id, amount) {
-    // func verificar coins da db
-    return true;
+    return ((await getUserCoins(id)) >= amount)
 }
 
 /**
@@ -22,8 +22,7 @@ async function hasUserCoins(id, amount) {
 * @param {any} id - id do usuário
 **/
 async function getUserBank(id) {
-    // func pegar bank da db
-    return 15;
+    return (await db.data.users.find(search => search.id === id)).bank
 }
 
 /**
@@ -32,8 +31,7 @@ async function getUserBank(id) {
 * @param {number} amount - quantia de coins
 **/
 async function hasUserBank(id, amount) {
-    // func verificar coins da db no banco
-    return true;
+    return ((await getUserBank(id)) >= amount)
 }
 
 /**
@@ -41,8 +39,7 @@ async function hasUserBank(id, amount) {
 * @param {any} id - id do usuário
 **/
 async function getUserTotal(id) {
-    // pegar quantia de coins mao + banco
-    return 27;
+    return ((await getUserCoins(id)) + (await getUserBank(id)))
 }
 
 /**
@@ -51,8 +48,7 @@ async function getUserTotal(id) {
 * @param {number} amount - quantia de coins
 **/
 async function hasUserTotal(id, amount) {
-    // func verificar coins da db no banco e na mao
-    return true;
+    return ((await getUserTotal(id)) >= amount)
 }
 
 export { getUserBank, hasUserBank, getUserCoins, hasUserCoins, getUserTotal, hasUserTotal }

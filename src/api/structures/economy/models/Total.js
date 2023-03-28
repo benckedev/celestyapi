@@ -1,6 +1,6 @@
-import { getUserBank, getUserCoins, hasUserTotal } from "../../../functions/economy/coins/get/getUserCoins.js";
-import { removeUserAny } from '../../../functions/economy/coins/post/removeUserCoins.js'
-import format from '../../../functions/economy/formatter.js'
+import { getUserBank, getUserCoins, hasUserTotal } from '../functions/coins/get/getUserCoins.js'
+import { removeUserAny } from '../functions/coins/post/removeUserCoins.js'
+import format from '../../../utils/functions/format.js'
 
 export class Total {
     #userID

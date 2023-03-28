@@ -1,7 +1,8 @@
-import { getUserCoins, hasUserCoins } from "../../../functions/economy/coins/get/getUserCoins.js";
-import { setUserCoins } from "../../../functions/economy/coins/post/setUserCoins.js";
-import { removeUserCoins } from '../../../functions/economy/coins/post/removeUserCoins.js'
-import format from '../../../functions/economy/formatter.js'
+import { getUserCoins, hasUserCoins } from '../functions/coins/get/getUserCoins.js'
+import { setUserCoins } from '../functions/coins/post/setUserCoins.js'
+import { removeUserCoins } from '../functions/coins/post/removeUserCoins.js'
+import format from '../../../utils/functions/format.js'
+import { addUserCoins } from '../functions/coins/post/addUserCoins.js'
 
 export class Wallet {
     #userID
@@ -26,6 +27,15 @@ export class Wallet {
 
             }
         }
+    }
+
+    /** 
+     * adiciona coins na carteira do usuario
+     * @param {number} amount - quantia para setar
+     * 
+     **/
+    async add(amount = 1) {
+        return addUserCoins(this.#userID, amount)
     }
 
     /** 

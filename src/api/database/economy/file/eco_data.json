@@ -1,0 +1,20 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "coins": 0,
+      "bank": 200,
+      "danpen": 0,
+      "delay": {
+        "work": 0,
+        "crime": 0,
+        "steal": 0,
+        "explore": 0,
+        "fish": 0,
+        "mine": 0,
+        "pay": 0
+      },
+      "transactions": []
+    }
+  ]
+}

@@ -1,7 +1,8 @@
-import { getUserDanpen, hasUserDanpen } from '../../../functions/economy/danpen/get/getUserDanpen.js'
-import { setUserDanpen } from '../../../functions/economy/danpen/post/setUserDanpen.js'
-import { removeUserDanpen } from '../../../functions/economy/danpen/post/removeUserDanpen.js'
-import format from '../../../functions/economy/formatter.js'
+import { getUserDanpen, hasUserDanpen } from '../functions/danpen/get/getUserDanpen.js'
+import { setUserDanpen } from '../functions/danpen/post/setUserDanpen.js'
+import { removeUserDanpen } from '../functions/danpen/post/removeUserDanpen.js'
+import { addUserDanpen } from '../functions/danpen/post/addUserDanpen.js'
+import format from '../../../utils/functions/format.js'
 
 export class Danpen {
     #userID
@@ -26,6 +27,15 @@ export class Danpen {
 
             }
         }
+    }
+
+    /** 
+     * adiciona danpen ao usuário
+     * @param {number} amount - quantia para setar
+     * 
+     **/
+    async add(amount = 1) {
+        return addUserDanpen(this.#userID, amount)
     }
 
     /** 

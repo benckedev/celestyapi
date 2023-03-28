@@ -1,11 +1,11 @@
+import { db } from "../../../../../database/economy/EconomyData.js";
 /**
 * função para setar coins do usuário
 * @param {any} id - id do usuário
 * @param {number} amount - quantia para setar
 **/
 async function setUserCoins(id, amount) {
-    // func setar coins da db
-    return amount;
+    db.data.users.find(search => search.id === id).coins = amount
 }
 
 /**
@@ -14,8 +14,7 @@ async function setUserCoins(id, amount) {
 * @param {number} amount - quantia para setar
 **/
 async function setUserBank(id, amount) {
-    // func setar bank da db
-    return amount;
+    db.data.users.find(search => search.id === id).bank = amount
 }
 
 export { setUserCoins, setUserBank }

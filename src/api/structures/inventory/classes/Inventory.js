@@ -1,6 +1,6 @@
-import { getItem, getItemList, hasItem } from "../../functions/inventory/get/listItems.js"
-import { addItem, removeItem } from "../../functions/inventory/post/addItem.js"
-import { ItemList } from "../item/ItemList.js"
+import { getItem, getItemList, hasItem } from "../functions/get/listItems.js"
+import { addItem, removeItem } from "../functions/post/addItem.js"
+import { ItemList } from "../models/item/ItemList.js"
 
 export class Inventory {
     #userID

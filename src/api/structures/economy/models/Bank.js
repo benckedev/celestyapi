@@ -1,7 +1,8 @@
-import { getUserBank, hasUserBank } from "../../../functions/economy/coins/get/getUserCoins.js";
-import { setUserBank } from "../../../functions/economy/coins/post/setUserCoins.js";
-import { removeUserBank } from '../../../functions/economy/coins/post/removeUserCoins.js'
-import format from '../../../functions/economy/formatter.js'
+import { getUserBank, hasUserBank } from '../functions/coins/get/getUserCoins.js'
+import { setUserBank } from '../functions/coins/post/setUserCoins.js'
+import { removeUserBank } from '../functions/coins/post/removeUserCoins.js'
+import format from '../../../utils/functions/format.js'
+import { addUserBank } from '../functions/coins/post/addUserCoins.js'
 
 export class Bank {
     #userID
@@ -26,6 +27,15 @@ export class Bank {
 
             }
         }
+    }
+
+    /** 
+     * adiciona coins no banco do usuario
+     * @param {number} amount - quantia para setar
+     * 
+     **/
+    async add(amount = 1) {
+        return addUserBank(this.#userID, amount)
     }
 
     /** 
