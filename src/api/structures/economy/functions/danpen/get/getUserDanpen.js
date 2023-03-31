@@ -3,8 +3,7 @@
 * @param {any} id - id do usuário
 **/
 export async function getUserDanpen(id) {
-    // func pegar coins da db
-    return 13;
+    return db.data.users.find(search => search.id === id).danpen
 }
 
 /**
@@ -13,6 +12,5 @@ export async function getUserDanpen(id) {
 * @param {number} amount - quantia de danpen
 **/
 export async function hasUserDanpen(id, amount) {
-    // func verificar danpen da db
-    return true;
+    return (await getUserDanpen(id).danpen >= amount)
 }

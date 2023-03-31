@@ -1,11 +1,11 @@
+import { db } from "../../../../database/inventory/InventoryData.js";
 /**
 *  retorna todos os itens do inventário
 *  @param {any} id - id do usuário
 *   
 **/
 export async function getItemList(id) {
-    // codigo retorna itens do inventario
-    return [];
+    return db.data.invs.find(search => search.id === id).items
 }
 
 /**
@@ -15,8 +15,7 @@ export async function getItemList(id) {
 *   
 **/
 export async function getItem(id, item_id) {
-    // codigo retorna item do inventario
-    return {};
+    return db.data.invs.find(search => search.id === id).items.find(itemSearch => itemSearch.id === item_id)
 }
 
 /**
@@ -27,6 +26,10 @@ export async function getItem(id, item_id) {
 *   
 **/
 export async function hasItem(id, item_id, amount = 1) {
-    // codigo verifica se há item no inventário com certa quantia
-    return true;
+    let userInventory = db.data.invs.find(search => search.id === id).items
+    let itemInventory = userInventory.find(search => search.id === item_id)
+
+    if (itemInventory && itemInventory.amount >= amount) return true
+    else return false
+
 }

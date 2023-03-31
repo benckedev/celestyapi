@@ -43,7 +43,4 @@ export class ItemList {
         if (!id) return this.list
         else return this.list.find(search => search.id === id)
     }
-
-
-
 }
