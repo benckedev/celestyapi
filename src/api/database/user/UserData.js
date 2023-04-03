@@ -13,7 +13,7 @@ export const db = new Low(adapter)
 
 
 /** 
- * inicia a database de economia
+ * inicia a database
  * **/
 export async function initUserData() {
     await db.read()
@@ -29,7 +29,7 @@ export class UserData {
     }
 
     /** 
-     * verifica se o usuário está na DB de economia
+     * verifica se o usuário está na DB
      * **/
     isInDb() {
         return (db.data.users.findIndex(search => search.id === this.#userID) !== -1)
@@ -39,16 +39,35 @@ export class UserData {
      * bota o usuário na DB
      * **/
     putInDb() {
-        if (this.hasDb === true) throw Error('O usuário já está na database de economia.')
+        if (this.hasDb === true) throw Error('O usuário já está na database.')
         db.data.users.push({
             id: this.#userID,
             blacklist: false,
+            premium: {
+                since: 0,
+                days: 0,
+                group: 0,
+                background: ""
+            },
+            profile: {
+                style: 1,
+                bio: 'Eu amo a Celesty s2',
+                backgroud: [],
+                tag: [],
+                marry: {
+                    user: 0,
+                    username: 'unknown#0000',
+                    since: 0,
+                    children: 0
+                }
+            },
+            ship: [],
             permissions: {
                 _GUEST: true,
                 _VIP: false,
                 _STAFF: false,
                 _DEV: false
-            }
+            },
         })
     }
 

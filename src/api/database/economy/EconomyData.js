@@ -55,6 +55,7 @@ export class EconomyData {
                 explore: 0,
                 fish: 0,
                 mine: 0,
+                mate: 0,
                 pay: 0
             },
             transactions: []

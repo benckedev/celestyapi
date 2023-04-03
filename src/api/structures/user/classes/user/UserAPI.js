@@ -3,7 +3,7 @@ import { Danpen } from '../../../economy/models/Danpen.js';
 import { Total } from '../../../economy/models/Total.js';
 import { Wallet } from '../../../economy/models/Wallet.js';
 import { Inventory } from '../../../inventory/classes/Inventory.js';
-import { EconomyData, initEconomyData, saveEconomyData } from '../../../../database/economy/EconomyData.js';
+import { EconomyData } from '../../../../database/economy/EconomyData.js';
 import { Work } from '../../../economy/models/command/Work.js';
 import { Crime } from '../../../economy/models/command/Crime.js';
 import { Steal } from '../../../economy/models/command/Steal.js';

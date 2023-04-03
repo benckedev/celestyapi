@@ -5,9 +5,11 @@ import { getUserBank, getUserCoins, getUserTotal } from "../get/getUserCoins.js"
 * @param {any} id - id do usuário
 * @param {number} amount - quantia para remover
 **/
-async function removeUserCoins(id, amount) {
+async function removeUserCoins(id, amount, options = { transaction: true }) {
     if (await getUserCoins(id) < amount) throw Error('O usuário há menos coins na carteira que o necessário para remover.')
-    db.data.users.find(search => search.id === id).coins -= amount
+    let userDB = db.data.users.find(search => search.id === id)
+    userDB.coins -= amount
+    if (options.transaction !== false) userDB.transactions.push({ method: "REM", in: "WALLET", date: Date.now(), amount: amount })
 }
 
 /**
@@ -15,9 +17,11 @@ async function removeUserCoins(id, amount) {
 * @param {any} id - id do usuário
 * @param {number} amount - quantia para remover
 **/
-async function removeUserBank(id, amount) {
+async function removeUserBank(id, amount, options = { transaction: true }) {
     if (await getUserBank(id) < amount) throw Error('O usuário há menos coins no banco que o necessário para remover.')
-    db.data.users.find(search => search.id === id).bank -= amount
+    let userDB = db.data.users.find(search => search.id === id)
+    userDB.bank -= amount
+    if (options.transaction !== false) userDB.transactions.push({ method: "REM", in: "BANK", date: Date.now(), amount: amount })
 }
 
 /**
@@ -25,7 +29,7 @@ async function removeUserBank(id, amount) {
 * @param {any} id - id do usuário
 * @param {number} amount - quantia para remover
 **/
-async function removeUserAny(id, amount) {
+async function removeUserAny(id, amount, options = { transaction: true }) {
     if (await getUserTotal(id) < amount) throw Error('O usuário há menos coins que o necessário para remover.')
     let userCoins = await getUserCoins(id)
     let userBank = await getUserBank(id)
@@ -41,6 +45,7 @@ async function removeUserAny(id, amount) {
         userDb.coins = userCoins - amount
         userDb.bank = userBank
     }
+    if (options.transaction !== false) userDb.transactions.push({ method: "REM", in: "ANY", date: Date.now(), amount: amount })
 }
 
 export { removeUserCoins, removeUserBank, removeUserAny }
