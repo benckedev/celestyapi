@@ -1,4 +1,5 @@
 import { can } from "../../functions/command/get/getUserDelay.js";
+import { addUserEarnings } from "../../functions/command/post/addUserEarnings.js";
 import { set } from "../../functions/command/post/setUserDelay.js";
 
 export class Fish {
@@ -20,4 +21,5 @@ export class Fish {
     set() {
         return set(this.#userID, "fish")
     }
+
 }

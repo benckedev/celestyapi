@@ -10,6 +10,7 @@ import { Steal } from '../../../economy/models/command/Steal.js';
 import { Explore } from '../../../economy/models/command/Explore.js';
 import { Fish } from '../../../economy/models/command/Fish.js';
 import { Mine } from '../../../economy/models/command/Mine.js';
+import { VIP } from '../../models/VIP.js';
 
 
 export class User {
@@ -29,6 +30,13 @@ export class User {
          * @type {Inventory}
          */
         this.inventory = new Inventory(this.userID)
+
+
+        /** 
+         * controle do sistema de VIP
+         * @type {VIP}
+         * **/
+        this.vip = new VIP(this.userID)
 
     }
 }

@@ -1,4 +1,5 @@
 import { db } from "../../../../database/inventory/InventoryData.js"
+import { getItem, getItemList, hasItem } from "../get/listItems.js"
 
 /** 
  * adiciona item ao inventário com certa quantia
@@ -7,7 +8,17 @@ import { db } from "../../../../database/inventory/InventoryData.js"
  * @param {number} amount - quantidade
  * **/
 export async function addItem(id, item, amount = 1) {
-    db.data.invs.find(search => search.id === id).items.push({ ...item, amount: amount })
+
+    if (hasItem(id, item.id)) {
+        let uInventory = await getItemList(id)
+        let itemIndex = uInventory.indexOf(i => i.id === item.id)
+
+        db.data.invs.find(search => search.id === id).items[itemIndex].amount += amount
+    } else {
+
+        db.data.invs.find(search => search.id === id).items.push({ ...item, amount: amount })
+
+    }
 }
 
 /** 

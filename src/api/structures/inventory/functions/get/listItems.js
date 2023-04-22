@@ -18,6 +18,7 @@ export async function getItem(id, item_id) {
     return db.data.invs.find(search => search.id === id).items.find(itemSearch => itemSearch.id === item_id)
 }
 
+
 /**
 *  verifica se há item no inventário com/sem quantia
 *  @param {any} id - id do usuário

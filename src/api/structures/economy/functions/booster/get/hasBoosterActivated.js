@@ -5,7 +5,7 @@ import { db } from "../../../../../database/inventory/InventoryData.js";
  * @param {number} id - id do usuario
  * **/
 export function hasBoosterActivated(id) {
-    let userInventory = db.data.invs.find(search => search.id === id).list
+    let userInventory = db.data.invs.find(search => search.id === id).items
     let inventoryBooster = userInventory.find(search => search.name.toLowerCase().startsWith('booster') && search.activated === true)
     return inventoryBooster
 }

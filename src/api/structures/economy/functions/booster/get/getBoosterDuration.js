@@ -6,7 +6,7 @@ import { db } from "../../../../../database/inventory/InventoryData.js";
  * @param {number} itemID - id do item no inventario do usuario
  * **/
 export function getBoosterDuration(id, itemID) {
-    let userInventory = db.data.invs.find(search => search.id === id).list
+    let userInventory = db.data.invs.find(search => search.id === id).items
     let inventoryItem = userInventory.find(search => search.id === itemID)
     let itemDuration = inventoryItem.duration * 60000
     let itemTimestart = inventoryItem.timestart

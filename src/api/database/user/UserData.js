@@ -45,7 +45,10 @@ export class UserData {
             blacklist: false,
             premium: {
                 since: 0,
-                days: 0,
+                days: {
+                    timestamp: 0,
+                    value: 0
+                },
                 group: 0,
                 background: ""
             },
@@ -61,13 +64,14 @@ export class UserData {
                     children: 0
                 }
             },
-            ship: [],
             permissions: {
                 _GUEST: true,
+                _BOOSTER: false,
                 _VIP: false,
                 _STAFF: false,
                 _DEV: false
             },
+            ship: [],
         })
     }
 
