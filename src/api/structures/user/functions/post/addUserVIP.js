@@ -1,5 +1,5 @@
-import { db } from "../../../../database/user/UserData";
-import { has } from "../get/hasUserVIP";
+import { db } from "../../../../database/user/UserData.js";
+import { has } from "../get/hasUserVIP.js";
 
 /** 
  * adiciona dias ao VIP do usuário

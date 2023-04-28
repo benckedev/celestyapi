@@ -1,4 +1,4 @@
-import { db } from "../../../../database/user/UserData";
+import { db } from "../../../../database/user/UserData.js";
 
 /** 
  * retorna informações do VIP

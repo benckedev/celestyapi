@@ -1,14 +1,15 @@
 {
   "users": [
     {
-      "id": 123,
-      "coins": 0,
+      "id": 13,
+      "coins": 100,
       "bank": 0,
       "danpen": 0,
-      "xp": 0,
+      "xp": 3,
       "level": 1,
+      "rep": 0,
       "delay": {
-        "work": 1680225015252,
+        "work": 1682650983628,
         "crime": 0,
         "steal": 0,
         "explore": 0,

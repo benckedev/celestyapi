@@ -6,7 +6,7 @@
     "dependencies": {
         "discord.js": "^14.8.0",
         "lowdb": "^5.1.0",
-        "nodemon": "^2.0.21"
+        "nodemon": "^2.0.22"
     },
     "type": "module"
 }

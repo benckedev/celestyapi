@@ -5,18 +5,18 @@ import { db as economyDb } from "../../../../../database/economy/EconomyData.js"
  * @param {any} guildID - ID do servidor (opcional)
  * 
  * **/
-export async function getRankCoins(options = { guildMembers: [] }) {
-    let db = economyDb.data.users.sort((a, b) => (b.coins + b.bank) - (a.coins + a.bank))
+export async function getRankRep(options = { guildMembers: [] }) {
+    let db = economyDb.data.users.sort((a, b) => (b.rep + b.rep) - (a.rep + a.rep))
     let topUsers = [];
     if (!options.guild) {
         for (let i = 0; i <= 10; i++) {
-            if (db[i]) topUsers.push({ id: db[i].id, coins: db[i].coins + db[i].bank })
+            if (db[i]) topUsers.push({ id: db[i].id, rep: db[i].rep })
         }
     } else {
         let i = 0;
         do {
             if (options.guildMembers.findIndex(search => search.id === db[i]) !== -1) {
-                topUsers.push({ id: db[i].id, coins: db[i].coins + db[i].bank })
+                topUsers.push({ id: db[i].id, rep: db[i].rep })
                 i++;
             }
         } while (i < 11)

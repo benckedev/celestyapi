@@ -1,1 +1,37 @@
-{}
+{
+  "users": [
+    {
+      "id": 13,
+      "blacklist": false,
+      "premium": {
+        "since": 0,
+        "days": {
+          "timestamp": 0,
+          "value": 0
+        },
+        "group": 0,
+        "background": ""
+      },
+      "profile": {
+        "style": 1,
+        "bio": "Eu amo a Celesty s2",
+        "backgroud": [],
+        "tag": [],
+        "marry": {
+          "user": 0,
+          "username": "unknown#0000",
+          "since": 0,
+          "children": 0
+        }
+      },
+      "permissions": {
+        "_GUEST": true,
+        "_BOOSTER": false,
+        "_VIP": false,
+        "_STAFF": false,
+        "_DEV": false
+      },
+      "ship": []
+    }
+  ]
+}

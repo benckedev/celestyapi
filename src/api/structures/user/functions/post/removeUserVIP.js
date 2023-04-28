@@ -1,4 +1,4 @@
-import { db } from "../../../../database/user/UserData";
+import { db } from "../../../../database/user/UserData.js";
 
 /**
  * remove o VIP do usuário

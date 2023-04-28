@@ -11,6 +11,8 @@ import { Explore } from '../../../economy/models/command/Explore.js';
 import { Fish } from '../../../economy/models/command/Fish.js';
 import { Mine } from '../../../economy/models/command/Mine.js';
 import { VIP } from '../../models/VIP.js';
+import { UserData } from '../../../../database/user/UserData.js';
+import { Rep } from '../../../economy/models/Rep.js';
 
 
 export class User {
@@ -23,7 +25,7 @@ export class User {
         /**
          * economia do usuário
          */
-        this.economy = { wallet: new Wallet(this.userID), bank: new Bank(this.userID), total: new Total(this.userID), danpen: new Danpen(this.userID), db: new EconomyData(this.userID), command: { work: new Work(this.userID), crime: new Crime(this.userID), steal: new Steal(this.userID), explore: new Explore(this.userID), fish: new Fish(this.userID), mine: new Mine(this.userID) } }
+        this.economy = { rep: new Rep(this.userID), wallet: new Wallet(this.userID), bank: new Bank(this.userID), total: new Total(this.userID), danpen: new Danpen(this.userID), db: new EconomyData(this.userID), command: { work: new Work(this.userID), crime: new Crime(this.userID), steal: new Steal(this.userID), explore: new Explore(this.userID), fish: new Fish(this.userID), mine: new Mine(this.userID) } }
 
         /**
          * inventário do usuário
@@ -38,5 +40,9 @@ export class User {
          * **/
         this.vip = new VIP(this.userID)
 
+        /** 
+         * database de usuário
+         * **/
+        this.db = new UserData(this.userID)
     }
 }

@@ -40,7 +40,7 @@ export class EconomyData {
      * bota o usuário na DB
      * **/
     putInDb() {
-        if (this.hasDb === true) throw Error('O usuário já está na database de economia.')
+        if (this.isInDb === true) throw Error('O usuário já está na database de economia.')
         db.data.users.push({
             id: this.#userID,
             coins: 0,
@@ -48,6 +48,7 @@ export class EconomyData {
             danpen: 0,
             xp: 0,
             level: 1,
+            rep: 0,
             delay: {
                 work: 0,
                 crime: 0,
@@ -69,7 +70,7 @@ export class EconomyData {
      * remove o usuário da database
      * **/
     removeFromDb() {
-        if (this.hasDb === false) throw Error('O usuário não está na database de economia.')
+        if (this.isInDb === false) throw Error('O usuário não está na database de economia.')
         let userIndex = db.data.users.findIndex(search => search.id === this.#userID)
         db.data.users.splice(userIndex, 1)
     }

@@ -39,7 +39,7 @@ export class UserData {
      * bota o usuário na DB
      * **/
     putInDb() {
-        if (this.hasDb === true) throw Error('O usuário já está na database.')
+        if (this.isInDb === true) throw Error('O usuário já está na database.')
         db.data.users.push({
             id: this.#userID,
             blacklist: false,
@@ -79,7 +79,7 @@ export class UserData {
      * remove o usuário da database
      * **/
     removeFromDb() {
-        if (this.hasDb === false) throw Error('O usuário não está na database.')
+        if (this.isInDb === false) throw Error('O usuário não está na database.')
         let userIndex = db.data.users.findIndex(search => search.id === this.#userID)
         db.data.users.splice(userIndex, 1)
     }

@@ -21,10 +21,9 @@ export var delay = {
 export function can(id, command = "") {
     command = command.toLocaleLowerCase()
     let userDB = db.data.users.find(search => search.id === id)
-    console.log(userDB)
     let userDelay = userDB.delay[command];
     let delayDB = delay[command] * 60000
 
-    if (delayDB - (Date.now() - userDelay) > 0) return { delay: delayDB - (Date.now() - userDelay) }
+    if (delayDB - (Date.now() - userDelay) > 0) return { delay: (delayDB - (Date.now() - userDelay)) }
     else return true
 }

@@ -40,7 +40,7 @@ export class InventoryData {
      * bota o usuário na DB
      * **/
     putInDb() {
-        if (this.hasDb === true) throw Error('O usuário já está na database de inventarios.')
+        if (this.isInDb === true) throw Error('O usuário já está na database de inventarios.')
         db.data.invs.push({
             id: this.#userID,
             items: []
@@ -51,12 +51,12 @@ export class InventoryData {
      * remove o usuário da database
      * **/
     removeFromDb() {
-        if (this.hasDb === false) throw Error('O usuário não está na database de inventarios.')
+        if (this.isInDb === false) throw Error('O usuário não está na database de inventarios.')
         let userIndex = db.data.invs.findIndex(search => search.id === this.#userID)
         db.data.invs.splice(userIndex, 1)
     }
 }
 
 export async function saveInventoryData() {
-    return await db.write()
+    await db.write()
 }

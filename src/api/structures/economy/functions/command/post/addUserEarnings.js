@@ -92,13 +92,12 @@ export async function addUserEarnings(id, cmd) {
     let earning = Math.floor(Math.random() * earnings[cmd].max) + earnings[cmd].min
     let xp = Math.floor(Math.random() * earningsXP[cmd].max) + earningsXP[cmd].min
 
-    if ([bonus.coins.min, bonus.coins.max] != [0, 0]) {
+    if (bonus.coins.min != 0 && bonus.coins.max != 0) {
         bonus_coins = Math.floor(Math.random() * bonus.coins.max) + bonus.coins.min
         earning = Math.floor(earning * bonus_coins)
     }
 
     if (bonus.xp != 0) xp = xp * bonus.xp
-
     await addUserCoins(id, earning, { transaction: false })
     await addUserXP(id, xp)
 

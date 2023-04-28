@@ -1,4 +1,4 @@
-import { db } from "../../../../database/user/UserData";
+import { db } from "../../../../database/user/UserData.js";
 
 /** 
  * verifica se o usuário há VIP
